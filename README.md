@@ -1,7 +1,7 @@
 # 🕵️ Abdal Web Intelligence Analyzer
 
 <div align="center">
-  <img src="scr.jpg" alt="Abdal Web Intelligence Analyzer Screenshot" width="600">
+  <img src="scr.webp" alt="Abdal Web Intelligence Analyzer Screenshot" width="600">
 </div>
 
 ## 🎤 README Translation
