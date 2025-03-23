@@ -66,11 +66,29 @@ The analyzer uses a stealth headless browser (based on `undetected_chromedriver`
 5. **Resource Counting**: Totals static and dynamic requests found in the DOM.
 6. **Performance Estimation**: Based on optional CPU, RAM, Disk, and OS input, calculates an estimated optimal RPS (requests per second) the server can handle for static/dynamic content.
 
+
+---
+
+## 🐳 Docker Installation & Usage
+
+You can run the Abdal Web Intelligence Analyzer instantly using Docker, without needing to install Python dependencies.
+
+### 📥 Pull the Docker Image
+
+```bash
+docker pull ebrasha/abdal-web-intelligence-analyzer
+
+docker run -it  ebrasha/abdal-web-intelligence-analyzer
+
+```
+
+
+
 ## 🛠️ Usage
 
 1. Run the script:
 ```bash
-python main.py
+python abdal-web-intelligence-analyzer.py
 ```
 
 2. Enter the website URL when prompted (include http:// or https://)
