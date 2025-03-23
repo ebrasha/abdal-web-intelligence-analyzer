@@ -116,7 +116,7 @@ def print_banner():
 ║|__/  |__/|_______/ |_______/ |__/  |__/|________/                ║
 ║                                                                  ║
 ║                                                                  ║
-║        Abdal Stealth Static Analyzer v4.3                        ║
+║        Abdal Web Intelligence Analyzer v4.3                      ║
 ║                                                                  ║
 ║  [About] Abdal Web Intelligence Analyzer helps you analyze       ║
 ║          websites protected by services like Cloudflare,         ║
