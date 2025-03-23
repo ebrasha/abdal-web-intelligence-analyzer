@@ -69,7 +69,21 @@ The analyzer uses a stealth headless browser (based on `undetected_chromedriver`
 
 ---
 
- 
+
+## 🐳 Docker Installation & Usage
+
+You can run the Abdal Web Intelligence Analyzer instantly using Docker, without needing to install Python dependencies.
+
+### 📥 Pull the Docker Image
+
+```bash
+docker pull ebrasha/abdal-web-intelligence-analyzer
+
+docker run -it  ebrasha/abdal-web-intelligence-analyzer
+
+```
+
+
 
 ## 🛠️ Usage
 
