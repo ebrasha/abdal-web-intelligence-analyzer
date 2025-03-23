@@ -1,4 +1,4 @@
-beautifulsoup4==4.12.3
+beautifulsoup4==4.13.3
 undetected-chromedriver==3.5.5
-httpx==0.27.0
-colorama==0.4.6 
+httpx==0.28.1
+colorama==0.4.6
