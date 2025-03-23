@@ -49,6 +49,7 @@
 ```bash
 pip install beautifulsoup4
 pip install httpx
+pip install colorama
 pip install undetected-chromedriver
 ```
 

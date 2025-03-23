@@ -13,6 +13,9 @@ import ssl
 import socket
 import httpx
 import random
+from datetime import datetime
+from colorama import init, Fore, Back, Style
+init(autoreset=True)
 
 uc.Chrome.__del__ = lambda self: None
 
@@ -94,23 +97,42 @@ def check_quic(domain):
 
 
 def print_banner():
-    banner = """
-============================================================
-🕵️ Abdal Stealth Static Analyzer v4.3
-------------------------------------------------------------
-Bypasses CDN/WAF protection using headless real browser
-Detects and bypasses ArvanCloud WAF protection
-Detects HTTP/2, HTTP/3, QUIC, Compression and CDN provider
-Extracts static (CSS, JS, images, fonts) + dynamic requests
-Estimates optimal static/dynamic requests/second
-Calculates real browser-based page load time
+    # Get current date and time in a fancy format
+    now = datetime.now()
+    formatted_time = now.strftime("%Y-%m-%d | %H:%M:%S")
 
-Developed by: Ebrahim Shafiei (EbraSha)
-Email: Prof.Shafiei@Gmail.com
-Telegram: @ProfShafiei
-============================================================
+    # Colored datetime string (optional for terminal)
+    fancy_time = f"{Fore.LIGHTGREEN_EX}{formatted_time}{Fore.LIGHTCYAN_EX}"
+
+    banner = f"""
+╔══════════════════════════════════════════════════════════════════╗
+║  /$$$$$$  /$$$$$$$  /$$$$$$$   /$$$$$$  /$$                      ║
+║ /$$__  $$| $$__  $$| $$__  $$ /$$__  $$| $$                      ║
+║| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$  \\ $$| $$                      ║
+║| $$$$$$$$| $$$$$$$ | $$  | $$| $$$$$$$$| $$                      ║
+║| $$__  $$| $$__  $$| $$  | $$| $$__  $$| $$                      ║
+║| $$  | $$| $$  \\ $$| $$  | $$| $$  | $$| $$                      ║
+║| $$  | $$| $$$$$$$/| $$$$$$$/| $$  | $$| $$$$$$$$                ║
+║|__/  |__/|_______/ |_______/ |__/  |__/|________/                ║
+║                                                                  ║
+║                                                                  ║
+║        Abdal Stealth Static Analyzer v4.3                        ║
+║                                                                  ║
+║  [About] Abdal Web Intelligence Analyzer helps you analyze       ║
+║          websites protected by services like Cloudflare,         ║
+║          Akamai or ArvanCloud. It uses a real browser to         ║
+║          bypass security layers, detect JS-based WAFs, extract   ║
+║          static/dynamic requests, measure load time, and         ║
+║          suggest safe request rates.                             ║
+║                                                                  ║
+║  [Date Time] {fancy_time}                                        ║
+╠══════════════════════════════════════════════════════════════════╣
+║ DEVELOPER: Ebrahim Shafiei (EbraSha)                             ║
+║ ENCRYPTED-COMMS: Prof.Shafiei@Gmail.com                          ║
+║ SECURE-CHANNEL: @ProfShafiei                                     ║
+╚══════════════════════════════════════════════════════════════════╝
 """
-    print(banner)
+    print(Fore.LIGHTCYAN_EX + banner)
 
 
 def is_arvan_protected(content, headers=None, cookies=None):
@@ -270,15 +292,17 @@ def get_static_requests(url, cpu_cores=None, ram_gb=None, disk_type=None, os_typ
 
 
 if __name__ == "__main__":
+
     print_banner()
-    url = input("🔗 Enter website URL (with http/https): ").strip()
+
+    url = input(Back.BLACK + Fore.LIGHTMAGENTA_EX + Style.BRIGHT  +"🔗 Enter website URL (with http/https): ").strip()
 
     try:
         cpu_input = input("🧠 CPU cores? (Enter to skip): ").strip()
         ram_input = input("💾 RAM in GB? (Enter to skip): ").strip()
         disk_input = input("💽 Disk type (HDD/SSD/NVMe)? (Enter to skip): ").strip()
         os_input = input("🖥️ OS (Linux/Windows)? (Enter to skip): ").strip()
-
+        print(Style.RESET_ALL)
         cpu_cores = int(cpu_input) if cpu_input else None
         ram_gb = int(ram_input) if ram_input else None
         disk_type = disk_input if disk_input else None
