@@ -125,7 +125,7 @@ def print_banner():
 ║          static/dynamic requests, measure load time, and         ║
 ║          suggest safe request rates.                             ║
 ║                                                                  ║
-║  [Date Time] {fancy_time}                                        ║
+   [Date Time] {fancy_time}                                         
 ╠══════════════════════════════════════════════════════════════════╣
 ║ DEVELOPER: Ebrahim Shafiei (EbraSha)                             ║
 ║ ENCRYPTED-COMMS: Prof.Shafiei@Gmail.com                          ║
