@@ -51,6 +51,9 @@ pip install beautifulsoup4
 pip install httpx
 pip install colorama
 pip install undetected-chromedriver
+python -m ensurepip --upgrade
+python -m pip install setuptools
+
 ```
 
 ## 🔍 How It Works
@@ -69,16 +72,7 @@ The analyzer uses a stealth headless browser (based on `undetected_chromedriver`
 
 ---
 
-## 🔧 Google Chrome Installation for Linux Users
-
-Before using this software, **Linux users must make sure Google Chrome is installed** on their system.
-
-If Google Chrome is **not** already installed, run the following command in your terminal:
-
-```bash
-bash <( curl -k https://raw.githubusercontent.com/ebrasha/abdal-web-intelligence-analyzer/refs/heads/main/linux-google-chrome-installer.sh )
-```
-
+ 
 
 ## 🐳 Docker Installation & Usage
 

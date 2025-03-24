@@ -10,26 +10,14 @@ set -e
 # Print Banner
 clear
 echo "=============================================================="
-echo "               Google Chrome Auto Installer Script            "
+echo "               Google Chrome Manager Script                   "
 echo "--------------------------------------------------------------"
 echo "  Author   : Ebrahim Shafiei (EbraSha)                        "
 echo "  Email    : Prof.Shafiei@Gmail.com                           "
-echo "  Purpose  : Automatically installs Google Chrome             "
-echo "             on Debian/Ubuntu/Kali and RHEL/CentOS/Fedora     "
-echo "             with smart dependency fix and version check.     "
+echo "  Purpose  : Install / Uninstall / Check Google Chrome        "
+echo "             on Debian and RHEL based Linux distributions     "
 echo "=============================================================="
 echo ""
-
-# Check if Chrome is already installed
-echo "[+] Checking if Google Chrome is already installed..."
-
-if command -v google-chrome >/dev/null 2>&1; then
-    echo "[✓] Google Chrome is already installed."
-    google-chrome --version
-    exit 0
-fi
-
-echo "[!] Google Chrome not found. Proceeding with installation..."
 
 # Detect Linux distribution
 if [ -f /etc/os-release ]; then
@@ -40,51 +28,104 @@ else
     exit 1
 fi
 
-# Function for Debian-based systems
+# -------------------------------
+# INSTALL FUNCTION
+# -------------------------------
 install_chrome_debian() {
     echo "[✓] Debian-based system detected: $DISTRO"
     sudo apt update -y
     sudo apt install wget gnupg2 -y
-
-    echo "[+] Downloading Chrome package..."
     wget -O google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-    echo "[+] Installing Chrome..."
     sudo dpkg -i google-chrome.deb || true
-
-    echo "[+] Fixing broken dependencies if needed..."
     sudo apt --fix-broken install -y
     sudo dpkg -i google-chrome.deb
-
-    echo "[+] Installation complete:"
+    echo "[✓] Google Chrome Installed:"
     google-chrome --version
 }
 
-# Function for RHEL-based systems
 install_chrome_rhel() {
     echo "[✓] RHEL-based system detected: $DISTRO"
     sudo dnf install -y wget || sudo yum install -y wget
-
-    echo "[+] Downloading Chrome package..."
     wget -O google-chrome.rpm https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-
-    echo "[+] Installing Chrome..."
     sudo dnf localinstall -y google-chrome.rpm || sudo yum localinstall -y google-chrome.rpm
-
-    echo "[+] Installation complete:"
+    echo "[✓] Google Chrome Installed:"
     google-chrome --version
 }
 
-# Dispatch based on distro
-case "$DISTRO" in
-    ubuntu|debian|kali|linuxmint)
-        install_chrome_debian
+# -------------------------------
+# UNINSTALL FUNCTION
+# -------------------------------
+uninstall_chrome_debian() {
+    echo "[+] Removing Google Chrome..."
+    sudo apt remove --purge -y google-chrome-stable
+    sudo apt autoremove -y
+    echo "[✓] Google Chrome removed."
+}
+
+uninstall_chrome_rhel() {
+    echo "[+] Removing Google Chrome..."
+    sudo dnf remove -y google-chrome-stable || sudo yum remove -y google-chrome-stable
+    echo "[✓] Google Chrome removed."
+}
+
+# -------------------------------
+# CHECK FUNCTION
+# -------------------------------
+check_chrome() {
+    echo "[+] Checking Google Chrome installation..."
+    if command -v google-chrome >/dev/null 2>&1; then
+        echo "[✓] Google Chrome is installed:"
+        google-chrome --version
+    else
+        echo "[✗] Google Chrome is NOT installed."
+    fi
+}
+
+# -------------------------------
+# MAIN CONTROL
+# -------------------------------
+case "$1" in
+    --install)
+        if command -v google-chrome >/dev/null 2>&1; then
+            echo "[✓] Google Chrome is already installed."
+            google-chrome --version
+            exit 0
+        fi
+        case "$DISTRO" in
+            ubuntu|debian|kali|linuxmint)
+                install_chrome_debian
+                ;;
+            centos|rhel|fedora|almalinux|rocky)
+                install_chrome_rhel
+                ;;
+            *)
+                echo "[-] Unsupported distribution: $DISTRO"
+                exit 1
+                ;;
+        esac
         ;;
-    centos|rhel|fedora|almalinux|rocky)
-        install_chrome_rhel
+    --uninstall)
+        case "$DISTRO" in
+            ubuntu|debian|kali|linuxmint)
+                uninstall_chrome_debian
+                ;;
+            centos|rhel|fedora|almalinux|rocky)
+                uninstall_chrome_rhel
+                ;;
+            *)
+                echo "[-] Unsupported distribution: $DISTRO"
+                exit 1
+                ;;
+        esac
+        ;;
+    --check)
+        check_chrome
         ;;
     *)
-        echo "[-] Unsupported distribution: $DISTRO"
+        echo "Usage:"
+        echo "  $0 --install     Install Google Chrome"
+        echo "  $0 --uninstall   Uninstall Google Chrome"
+        echo "  $0 --check       Check if Chrome is installed"
         exit 1
         ;;
 esac

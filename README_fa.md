@@ -51,6 +51,8 @@ pip install beautifulsoup4
 pip install httpx
 pip install colorama
 pip install undetected-chromedriver
+python -m ensurepip --upgrade
+python -m pip install setuptools
 ```
 
 ## 🔍 نحوه کار
@@ -68,16 +70,7 @@ pip install undetected-chromedriver
 
 ---
 
-## 🔧 نصب Google Chrome برای کاربران لینوکس
-
-قبل از اجرای این نرم‌افزار، **کاربران سیستم‌عامل لینوکس باید اطمینان حاصل کنند که مرورگر Google Chrome روی سیستم‌شان نصب شده است**.
-
-اگر Google Chrome روی سیستم شما نصب نیست، دستور زیر را در ترمینال اجرا کنید:
-
-```bash
-bash <( curl -k https://raw.githubusercontent.com/ebrasha/abdal-web-intelligence-analyzer/refs/heads/main/linux-google-chrome-installer.sh )
-```
-
+ 
 
 ## 🐳 نصب و اجرا با Docker
 
