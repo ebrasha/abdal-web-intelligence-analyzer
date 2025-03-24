@@ -102,7 +102,7 @@ docker run -it  ebrasha/abdal-web-intelligence-analyzer
 
 ### ▶️ If you are using **Windows**:
 
-1. Simply run the `run.bat` file by double-clicking it or executing it via terminal:
+ Simply run the `run.bat` file by double-clicking it or executing it via terminal:
 ```bat
 run.bat
 ```
