@@ -69,14 +69,27 @@ The analyzer uses a stealth headless browser (based on `undetected_chromedriver`
 
 ---
 
+## 🔧 Google Chrome Installation for Linux Users
+
+Before using this software, **Linux users must make sure Google Chrome is installed** on their system.
+
+If Google Chrome is **not** already installed, run the following command in your terminal:
+
+```bash
+bash <( curl -k https://raw.githubusercontent.com/ebrasha/abdal-web-intelligence-analyzer/refs/heads/main/linux-google-chrome-installer.sh )
+```
+
 
 ## 🐳 Docker Installation & Usage
 
 You can run the Abdal Web Intelligence Analyzer instantly using Docker, without needing to install Python dependencies.
+ 
 
 ### 📥 Pull the Docker Image
 
+
 ```bash
+
 docker pull ebrasha/abdal-web-intelligence-analyzer
 
 docker run -it  ebrasha/abdal-web-intelligence-analyzer
@@ -86,6 +99,13 @@ docker run -it  ebrasha/abdal-web-intelligence-analyzer
 
 
 ## 🛠️ Usage
+
+### ▶️ If you are using **Windows**:
+
+1. Simply run the `run.bat` file by double-clicking it or executing it via terminal:
+```bat
+run.bat
+```
 
 1. Run the script:
 ```bash
